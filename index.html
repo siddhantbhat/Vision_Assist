@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VisionAssist</title>
+    <style>
+        body {
+            background: #0b1220;
+            color: white;
+            font-family: Arial;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .start { background: #28a745; color: white; }
+        .stop { background: #dc3545; color: white; }
+    </style>
+</head>
+
+<body>
+
+<h2>VisionAssist – Camera Control</h2>
+
+<button class="start" onclick="startCamera()">Start Camera</button>
+<button class="stop" onclick="stopCamera()">Stop Camera</button>
+
+<br><br>
+
+<img id="video" src="" width="420" />
+
+<script>
+function startCamera() {
+    fetch("/camera/start")
+        .then(() => {
+            document.getElementById("video").src = "/video_feed";
+        });
+}
+
+function stopCamera() {
+    fetch("/camera/stop")
+        .then(() => {
+            document.getElementById("video").src = "";
+        });
+}
+</script>
+
+</body>
+</html>
+
+
